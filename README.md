@@ -47,7 +47,7 @@ Each MPI rank has:
 
 - 8/32/256-GPU supercomputers
 
-#### Even though you only have one GPU (Nvidia RTX 4070).
+#### Even though we have only have one GPU (Nvidia RTX 4070).
 
 
 
