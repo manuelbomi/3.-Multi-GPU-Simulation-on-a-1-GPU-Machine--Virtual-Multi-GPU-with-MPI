@@ -62,7 +62,7 @@ and here:
 
 ---
 
-
+## Project Structure
 
 ```python
 project3_mpi_cuda/
@@ -74,3 +74,13 @@ project3_mpi_cuda/
 │ └─ utils.h # small helpers
 └─ env_notes.md # some notes to assist @emmanuel oyekanlu 
 ```
+
+## Environment Requirements
+
+- Rocky Linux (RHEL compatible)
+
+- Nvidia RTX 4070 GPU 
+
+- CUDA Toolkit installed (nvcc works)
+
+- OpenMPI installed (openmpi + openmpi-devel)
