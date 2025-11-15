@@ -1,12 +1,12 @@
 # Multi-GPU Simulation on a 1‑GPU Machine (Virtual Multi‑GPU with MPI)
 
-This project simulates multi-GPU distributed training using MPI on a single physical GPU (NVIDIA RTX 4070). 
+#### This project simulates multi-GPU distributed training using MPI on a single physical GPU (NVIDIA RTX 4070). 
 
-The example uses a minimal CUDA kernel to represent model computation, hosts per-rank synthetic data, and implements an AllReduce (gradient averaging) manually using MPI point-to-point operations.
+#### The project uses a minimal CUDA kernel to represent model computation, hosts per-rank synthetic data, and implements an AllReduce (gradient averaging) manually using MPI point-to-point operations.
 
-Goal: implement rank-to-GPU mapping, gradient averaging, DDP internals, and how to scale concepts even on a single GPU.
+<ins>Goal</ins>: implement rank-to-GPU mapping, gradient averaging, DDP internals, and how to scale concepts even on a single GPU.
 
-In total, this project shows:
+#### In total, this project shows:
 
 #### <ins>Rank-to-GPU mapping</ins>
 
@@ -49,7 +49,10 @@ Each MPI rank has:
 
 #### Even though we have only have one GPU (Nvidia RTX 4070).
 
-Interested readers may benefit from reading the preceding projects in this series. They are available here:
+---
+
+
+#### Interested readers may benefit from reading the preceding projects in this series. They are available here:
 
 *https://github.com/manuelbomi/1.-HPC-Deep-Learning--Training-Workflow-Simulation-with-CUDA-MPI-Nvidia-RTX4070-GPU-and-Rocky-Linux*
 
