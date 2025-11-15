@@ -10,5 +10,5 @@ project3_mpi_cuda/
 ├─ src/
 │ ├─ mpi_cuda_train.cu # primary program (CUDA + MPI)
 │ └─ utils.h # small helpers
-└─ env_notes.md # notes about reusing your previous virtualenv
+└─ env_notes.md # some notes to assist @emmanuel oyekanlu 
 ```
