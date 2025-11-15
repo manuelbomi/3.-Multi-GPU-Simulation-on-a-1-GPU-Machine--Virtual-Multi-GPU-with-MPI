@@ -267,7 +267,7 @@ int main(int argc, char** argv) {
 
 #### 1. Go to the project root
 
-* cd ~/projects/project3_mpi_cuda *
+*cd ~/projects/project3_mpi_cuda*
 
 #### 2. Build the MPI + CUDA program
 
