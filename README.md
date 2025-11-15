@@ -49,6 +49,16 @@ Each MPI rank has:
 
 #### Even though we have only have one GPU (Nvidia RTX 4070).
 
+Interested readers may benefit from reading the preceding projects in this series. They are available here:
+
+*https://github.com/manuelbomi/1.-HPC-Deep-Learning--Training-Workflow-Simulation-with-CUDA-MPI-Nvidia-RTX4070-GPU-and-Rocky-Linux*
+
+and here: 
+
+*https://github.com/manuelbomi/2.-End-to-End-HPC-AI-Training-Simulation-with-CUDA-MPI-and-Slurm-on-Rocky-Linux-----RHEL-Compatible*
+
+---
+
 
 
 ```python
