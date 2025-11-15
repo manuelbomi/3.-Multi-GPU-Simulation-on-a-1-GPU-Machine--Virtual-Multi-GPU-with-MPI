@@ -273,7 +273,7 @@ int main(int argc, char** argv) {
 
 *make*
 
-This compiles src/mpi_cuda_train.cu into:
+#### This compiles src/mpi_cuda_train.cu into:
 
 *./mpi_cuda_train*
 
@@ -281,11 +281,11 @@ This compiles src/mpi_cuda_train.cu into:
 
 *./run.sh 4*
 
-run.sh will then execute:
+#### run.sh will then execute:
 
 *mpirun -np 4 --bind-to none --map-by slot ./mpi_cuda_train* ; (i.e. run with 4 MPI ranks)
 
-Alternatively, just run the program with:  
+#### Alternatively, just run the program with:  
 
 *mpirun -np 2 ./mpi_cuda_train* ; (i.e. run with 2 MPI ranks)
 
