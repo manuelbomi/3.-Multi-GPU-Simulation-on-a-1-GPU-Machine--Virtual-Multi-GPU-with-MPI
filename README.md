@@ -109,6 +109,8 @@ project3_mpi_cuda/
 
 *ctrl+x*                (to move back from nano to terminal)
 
+
+
 *chmod +x filename*     (to give each file the necessary execution permission)
 
 ---
@@ -135,6 +137,8 @@ clean:
 	rm -f mpi_cuda_train
 
 ```
+
+<img width="1600" height="900" alt="Image" src="https://github.com/user-attachments/assets/29429fb9-aa61-49c1-8e8c-6ae913fa2869" />
 
 > [!NOTE]
 > System MPI/CUDA setups vary. If nvcc linking fails on your machine, try replacing the compile line with an mpicxx command and add -L/-I for CUDA.
@@ -166,6 +170,8 @@ mpirun -np ${NUM_RANKS} --bind-to none --map-by slot ./mpi_cuda_train
 Make the script executable: chmod +x run.sh.
 
 ```
+
+<img width="1600" height="900" alt="Image" src="https://github.com/user-attachments/assets/23d23e4a-01ab-4342-9860-a652190b638b" />
 
 ---
 
@@ -261,6 +267,8 @@ int main(int argc, char** argv) {
 }
 ```
 
+<img width="1600" height="900" alt="Image" src="https://github.com/user-attachments/assets/a092ddc1-6779-4bcb-bc72-489d63528034" />
+
 ---
 
 ## How to Run the Project
@@ -285,9 +293,15 @@ int main(int argc, char** argv) {
 
 *mpirun -np 4 --bind-to none --map-by slot ./mpi_cuda_train* ; (i.e. run with 4 MPI ranks)
 
+<img width="1600" height="900" alt="Image" src="https://github.com/user-attachments/assets/43d7581b-e44a-49eb-bbe0-200a2819bbfe" />
+
+<img width="1600" height="900" alt="Image" src="https://github.com/user-attachments/assets/d119d28b-9855-4bb1-bd4f-cd74a53a8559" />
+
 #### Alternatively, just run the program with:  
 
 *mpirun -np 2 ./mpi_cuda_train* ; (i.e. run with 2 MPI ranks)
+
+<img width="1600" height="900" alt="Image" src="https://github.com/user-attachments/assets/6e8dfcf3-2403-4eff-b677-0d5b1fc49219" />
 
 
 #### All 4 MPI ranks will run simulated GPUs on your single RTX 4070, each with its own:
