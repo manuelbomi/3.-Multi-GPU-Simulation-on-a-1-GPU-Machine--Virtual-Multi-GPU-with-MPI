@@ -171,7 +171,7 @@ Make the script executable: chmod +x run.sh.
 
 ```
 
-<img width="1600" height="900" alt="Image" src="https://github.com/user-attachments/assets/23d23e4a-01ab-4342-9860-a652190b638b" />
+
 
 ---
 
@@ -201,6 +201,9 @@ MPI_Abort(MPI_COMM_WORLD, rc);
 #define CHECK_MPI(x) checkMPI((x), __FILE__, __LINE__)
 
 ```
+
+<img width="1600" height="900" alt="Image" src="https://github.com/user-attachments/assets/23d23e4a-01ab-4342-9860-a652190b638b" />
+
 ---
 
 <ins>src/mpi_cuda_train.cu</ins>
