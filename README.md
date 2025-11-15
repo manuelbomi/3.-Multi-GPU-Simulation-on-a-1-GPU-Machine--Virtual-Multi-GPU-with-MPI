@@ -92,6 +92,16 @@ project3_mpi_cuda/
     • After computing the local gradient, ranks participate in a manual AllReduce implemented using MPI point-to-point operations to compute the elementwise average of gradients across ranks.
     • Aggregated gradients are then applied to each rank's shard locally.
     • The example is intentionally small and fully commented so you can follow the exact data movement (GPU ↔ host ↔ MPI) that mirrors real distributed training.
+	• Create a virtual environemnt in your Rocky Linux
+    • Create new project file; e.g.  *mkdir -p ~/projects/project3_mpi_cuda && cd ~/projects/project3_mpi_cuda*
+	• Copy the codes from below or clone this repository
+	• Paste each code into its file if you choose to copy. You can use nano to create each file. Give each file the necessary execution permissions (chmod +x filename)
+
+#### For example, to use nano to create and paste code into run.sh, follow the sequence below:
+
+*nano run.sh*
+	
+	
 
 #### All the codes are provided below:
 
@@ -146,4 +156,103 @@ Make the script executable: chmod +x run.sh.
 ```
 
 ---
+
+<ins>src/utils.h</ins>
+```python
+#pragma once
+#include <mpi.h>
+#include <cuda_runtime.h>
+#include <cstdio>
+#include <cstdlib>
+#include <vector>
+
+inline void checkCuda(cudaError_t e, const char* file, int line) {
+if (e != cudaSuccess) {
+fprintf(stderr, "CUDA error %s at %s:%d\n", cudaGetErrorString(e), file, line);
+MPI_Abort(MPI_COMM_WORLD, -1);
+}
+}
+#define CHECK_CUDA(x) checkCuda((x), __FILE__, __LINE__)
+
+inline void checkMPI(int rc, const char* file, int line) {
+if (rc != MPI_SUCCESS) {
+fprintf(stderr, "MPI error %d at %s:%d\n", rc, file, line);
+MPI_Abort(MPI_COMM_WORLD, rc);
+}
+}
+#define CHECK_MPI(x) checkMPI((x), __FILE__, __LINE__)
+
+```
+---
+
+<ins>src/mpi_cuda_train.cu</ins>
+```python
+// Allocate device arrays for weights and gradient (per-shard)
+#include <mpi.h>
+#include <cuda_runtime.h>
+#include <stdio.h>
+
+// -----------------------------------------------
+// Simple GPU kernel: multiply each element by rank
+// -----------------------------------------------
+__global__ void scale_kernel(float* data, int N, int rank) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    if (idx < N) data[idx] *= rank;
+}
+
+// -----------------------------------------------
+// Main Program
+// -----------------------------------------------
+int main(int argc, char** argv) {
+
+    // Initialize MPI
+    MPI_Init(&argc, &argv);
+
+    int world_rank, world_size;
+    MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+
+    const int N = 1024;
+
+    // Host buffer
+    float* host_data = (float*) malloc(N * sizeof(float));
+
+    // Initialize host data (no CURAND — deterministic)
+    for (int i = 0; i < N; i++) {
+        host_data[i] = 1.0f;  // constant data for demonstration
+    }
+
+    // Allocate GPU memory
+    float* dev_data;
+    cudaMalloc(&dev_data, N * sizeof(float));
+    cudaMemcpy(dev_data, host_data, N * sizeof(float), cudaMemcpyHostToDevice);
+
+    // Launch kernel
+    int threads = 256;
+    int blocks = (N + threads - 1) / threads;
+    scale_kernel<<<blocks, threads>>>(dev_data, N, world_rank);
+    cudaDeviceSynchronize();
+
+    // Copy results back
+    cudaMemcpy(host_data, dev_data, N * sizeof(float), cudaMemcpyDeviceToHost);
+
+    // Print a few values to confirm each rank did GPU work
+    printf("Rank %d sample values: %f %f %f\n",
+           world_rank, host_data[0], host_data[1], host_data[2]);
+
+    // Cleanup
+    cudaFree(dev_data);
+    free(host_data);
+
+    MPI_Finalize();
+    return 0;
+}
+```
+
+---
+
+
+
+
+
 
