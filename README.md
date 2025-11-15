@@ -99,11 +99,18 @@ project3_mpi_cuda/
 
 #### For example, to use nano to create and paste code into run.sh, follow the sequence below:
 
-*nano run.sh*
+*nano run.sh*           (create nano file run.sh)
+*ctrl+shift+v*          (to paste the code into the nano file)
+*ctrl+o*                (to save code)
+*press Enter*
+*ctrl+x*                (to move back from nano to terminal)
+*chmod +x filename*     (to give each file the necessary execution permission)
+
+---
 	
 	
 
-#### All the codes are provided below:
+#### Do the same process for all the codes. All the codes are provided below:
 
 <ins>Makefile</ins>
 
