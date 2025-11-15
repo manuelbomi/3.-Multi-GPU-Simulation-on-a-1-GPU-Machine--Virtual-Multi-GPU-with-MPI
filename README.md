@@ -263,6 +263,53 @@ int main(int argc, char** argv) {
 
 ---
 
+## How to Run the Project
+
+#### 1. Go to the project root
+
+* cd ~/projects/project3_mpi_cuda *
+
+#### 2. Build the MPI + CUDA program
+
+*make*
+
+This compiles src/mpi_cuda_train.cu into:
+
+*./mpi_cuda_train*
+
+#### 3. Run with 4 simulated GPUs (MPI ranks)
+
+*./run.sh 4*
+
+run.sh will then execute:
+
+*mpirun -np 4 --bind-to none --map-by slot ./mpi_cuda_train* ; (i.e. run with 4 MPI ranks)
+
+Alternatively, just run the program with:  
+
+*mpirun -np 2 ./mpi_cuda_train* ; (i.e. run with 2 MPI ranks)
+
+
+#### All 4 MPI ranks will run simulated GPUs on your single RTX 4070, each with its own:
+    • model shard
+    • synthetic data
+    • gradient
+    • manual AllReduce
+
+#### You should see output like:
+
+```python
+rank 0 step 0 shard_len 256 averaged_grad_norm 3.219...
+rank 1 step 0 shard_len 256 averaged_grad_norm 3.219...
+rank 2 step 0 shard_len 256 averaged_grad_norm 3.219...
+rank 3 step 0 shard_len 256 averaged_grad_norm 3.219...
+
+```
+
+#### If you see output from all ranks, this means your MPI+CUDA environment is configured correctly, and you can observe the core mechanics behind PyTorch DDP/NCCL.
+
+
+
 
 
 
