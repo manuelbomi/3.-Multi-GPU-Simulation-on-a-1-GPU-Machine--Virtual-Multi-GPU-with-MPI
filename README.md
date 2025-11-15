@@ -118,6 +118,7 @@ clean:
 > System MPI/CUDA setups vary. If nvcc linking fails on your machine, try replacing the compile line with an mpicxx command and add -L/-I for CUDA.
 > 
 > Alternative compile (if required):
+> 
 > mpicxx -std=c++14 -o $(TARGET) $(SRC) -I/usr/local/cuda/include -L/usr/local/cuda/lib64 -lcudart
 
 ---
