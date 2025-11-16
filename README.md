@@ -329,7 +329,7 @@ rank 3 step 0 shard_len 256 averaged_grad_norm 3.219...
 
 ## Summary
 
-#### In the simulation dicussed above, aach CUDA context behaves like a “virtual GPU”.
+#### In the simulation dicussed above, each CUDA context behaves like a “virtual GPU”.
 
 ```python
  ┌─────────────┐     ┌────────────────┐     ┌──────────────┐
