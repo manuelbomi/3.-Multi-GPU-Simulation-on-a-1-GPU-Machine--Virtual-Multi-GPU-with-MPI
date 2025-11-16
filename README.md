@@ -339,7 +339,7 @@ rank 3 step 0 shard_len 256 averaged_grad_norm 3.219...
  ├─────────────┤     ├────────────────┤     └──────────────┘
  │ MPI Rank 2  │ → → │ CUDA Context 2 │ → → │ Model Shard 2│
  ├─────────────┤     ├────────────────┤     └──────────────┘
- │ MPI Rank 3  │ → → │ CUDA Context 3 │ → → │ Model Shard 3 │
+ │ MPI Rank 3  │ → → │ CUDA Context 3 │ → → │ Model Shard 3│
  └─────────────┘     └────────────────┘
 
           (All insyances run on physical GPU 0)
@@ -359,11 +359,14 @@ rank 3 step 0 shard_len 256 averaged_grad_norm 3.219...
 #### By working through this program, using *one* GPU, we have simulated:
 
 ✔ How real distributed GPU training works
+
 ✔ How gradients flow between ranks
+
 ✔ How parallel GPU workers synchronize
+
 ✔ How to scale beyond a single GPU
 
-To fully understand how data a partitioned across multiple GPUs when huge models such as OpenAI ChatGPT, DeepSeek, Horovod, Pytorch are trained, please visit:
+#### To fully understand how data a partitioned across multiple GPUs when huge models such as OpenAI ChatGPT, DeepSeek, Horovod, Pytorch are trained, please visit:
 
 
 
