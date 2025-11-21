@@ -366,12 +366,14 @@ rank 3 step 0 shard_len 256 averaged_grad_norm 3.219...
 
 ✔ How to scale beyond a single GPU
 
-#### To fully understand how data a partitioned across multiple GPUs when huge models such as OpenAI ChatGPT, DeepSeek, Horovod, Pytorch are trained, please visit:
+#### To fully understand how data a partitioned across multiple GPUs when huge models such as OpenAI ChatGPT, DeepSeek, Horovod, Pytorch are trained, please visit:  https://github.com/manuelbomi/4.-Recreate-Distributed-Data-Parallel-DDP-from-Scratch-with-HPC-Slurm-MPI-CUDA-Rocky-Linux-and-GPU-
+
+---
 
 
 
 
-### Thank you for Reading
+#### Thank you for Reading
 
 ![Octocat](https://myoctocat.com/assets/images/base-octocat.svg)
 
